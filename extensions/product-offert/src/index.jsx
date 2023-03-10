@@ -24,13 +24,13 @@ const PRODUCT_VARIANTS_DATA = [
     id: "gid://shopify/ProductVariant/44734894375204",
     img: "https://cdn.shopify.com/s/files/1/0728/4549/2516/products/DIY-animal-bowtie.jpg?v=1678103218&width=1946",
     title: "Product 1 Title",
-    price: 10.0,
+    price: 50.0,
   },
   {
     id: "gid://shopify/ProductVariant/44734893031716",
     img: "https://cdn.shopify.com/s/files/1/0728/4549/2516/products/childrens-black-beanie.jpg?v=1678103213&width=1946",
     title: "Product 2 Title",
-    price: 20.0,
+    price: 50.0,
   },
 ];
 

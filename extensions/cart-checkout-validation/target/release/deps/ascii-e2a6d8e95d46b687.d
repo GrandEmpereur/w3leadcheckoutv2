@@ -1,0 +1,11 @@
+C:\laragon\www\W3lead\W3leadApp\new-checkout-patrick\extensions\cart-checkout-validation\target\release\deps\ascii-e2a6d8e95d46b687.rmeta: C:\Users\barto\.cargo\registry\src\github.com-1ecc6299db9ec823\ascii-0.9.3\src\lib.rs C:\Users\barto\.cargo\registry\src\github.com-1ecc6299db9ec823\ascii-0.9.3\src\ascii_char.rs C:\Users\barto\.cargo\registry\src\github.com-1ecc6299db9ec823\ascii-0.9.3\src\ascii_str.rs C:\Users\barto\.cargo\registry\src\github.com-1ecc6299db9ec823\ascii-0.9.3\src\ascii_string.rs C:\Users\barto\.cargo\registry\src\github.com-1ecc6299db9ec823\ascii-0.9.3\src\free_functions.rs
+
+C:\laragon\www\W3lead\W3leadApp\new-checkout-patrick\extensions\cart-checkout-validation\target\release\deps\libascii-e2a6d8e95d46b687.rlib: C:\Users\barto\.cargo\registry\src\github.com-1ecc6299db9ec823\ascii-0.9.3\src\lib.rs C:\Users\barto\.cargo\registry\src\github.com-1ecc6299db9ec823\ascii-0.9.3\src\ascii_char.rs C:\Users\barto\.cargo\registry\src\github.com-1ecc6299db9ec823\ascii-0.9.3\src\ascii_str.rs C:\Users\barto\.cargo\registry\src\github.com-1ecc6299db9ec823\ascii-0.9.3\src\ascii_string.rs C:\Users\barto\.cargo\registry\src\github.com-1ecc6299db9ec823\ascii-0.9.3\src\free_functions.rs
+
+C:\laragon\www\W3lead\W3leadApp\new-checkout-patrick\extensions\cart-checkout-validation\target\release\deps\ascii-e2a6d8e95d46b687.d: C:\Users\barto\.cargo\registry\src\github.com-1ecc6299db9ec823\ascii-0.9.3\src\lib.rs C:\Users\barto\.cargo\registry\src\github.com-1ecc6299db9ec823\ascii-0.9.3\src\ascii_char.rs C:\Users\barto\.cargo\registry\src\github.com-1ecc6299db9ec823\ascii-0.9.3\src\ascii_str.rs C:\Users\barto\.cargo\registry\src\github.com-1ecc6299db9ec823\ascii-0.9.3\src\ascii_string.rs C:\Users\barto\.cargo\registry\src\github.com-1ecc6299db9ec823\ascii-0.9.3\src\free_functions.rs
+
+C:\Users\barto\.cargo\registry\src\github.com-1ecc6299db9ec823\ascii-0.9.3\src\lib.rs:
+C:\Users\barto\.cargo\registry\src\github.com-1ecc6299db9ec823\ascii-0.9.3\src\ascii_char.rs:
+C:\Users\barto\.cargo\registry\src\github.com-1ecc6299db9ec823\ascii-0.9.3\src\ascii_str.rs:
+C:\Users\barto\.cargo\registry\src\github.com-1ecc6299db9ec823\ascii-0.9.3\src\ascii_string.rs:
+C:\Users\barto\.cargo\registry\src\github.com-1ecc6299db9ec823\ascii-0.9.3\src\free_functions.rs:
