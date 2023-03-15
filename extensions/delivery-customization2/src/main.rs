@@ -22,7 +22,7 @@ fn function(input: input::ResponseData) -> Result<output::FunctionResult> {
             let state_province = group.delivery_address.as_ref()
                 .and_then(|address| address.province_code.as_ref());
             match state_province {
-                Some(code) => code == "ES - Espana - Spain - Espagne",
+                Some(code) => code == "NC",
                 None => false
             }
         })

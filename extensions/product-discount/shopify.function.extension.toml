@@ -1,0 +1,15 @@
+name = "product-discount"
+type = "product_discounts"
+api_version = "2023-01"
+
+# This file stores configurations for your Shopify app.
+scopes = "write_products, write_discounts"
+
+[build]
+command = "cargo wasi build --release"
+path = "target/wasm32-wasi/release/product-discount.wasm"
+
+[ui.paths]
+create = "/volume/:functionId/new"
+details = "/volume/:functionId/:id"
+
