@@ -66,8 +66,9 @@ app.use("/api/*", shopify.validateAuthenticatedSession());
 
 app.use(express.json());
 
-// delivery Shopify function 
-
+/* -------------------------------------------------------------------------- */
+/*                               PAYMENT METHODE                              */
+/* -------------------------------------------------------------------------- */
 // Helper function for handling any user-facing errors in GraphQL responses
 function handleUserError(userErrors, res) {
   if (userErrors && userErrors.length > 0) {
@@ -77,6 +78,95 @@ function handleUserError(userErrors, res) {
   }
   return false;
 }
+
+// Endpoint for the payment customization UI to invoke
+app.post("/api/paymentCustomization/create", async (req, res) => {
+  const payload = req.body;
+  const graphqlClient = new shopify.api.clients.Graphql({
+    session: res.locals.shopify.session
+  });
+
+  try {
+    // Create the payment customization for the provided function ID
+    const createResponse = await graphqlClient.query({
+      data: {
+        query: `mutation PaymentCustomizationCreate($input: PaymentCustomizationInput!) {
+          paymentCustomizationCreate(paymentCustomization: $input) {
+            paymentCustomization {
+              id
+            }
+            userErrors {
+              message
+            }
+          }
+        }`,
+        variables: {
+          input: {
+            functionId: payload.functionId,
+            title: `Hide ${payload.paymentMethod} if cart total is larger than ${payload.cartTotal}`,
+            enabled: true,
+          },
+        }
+      },
+    });
+    // @ts-ignore
+    let createResult = createResponse.body.data.paymentCustomizationCreate;
+    if (handleUserError(createResult.userErrors, res)) {
+      return;
+    }
+
+    // Populate the function configuration metafield for the payment customization
+    const customizationId = createResult.paymentCustomization.id;
+    const metafieldResponse = await graphqlClient.query({
+      data: {
+        query: `mutation MetafieldsSet($customizationId: ID!, $configurationValue: String!) {
+          metafieldsSet(metafields: [
+            {
+              ownerId: $customizationId
+              namespace: "$app:payment-customization"
+              key: "function-configuration"
+              value: $configurationValue
+              type: "json"
+            }
+          ]) {
+            metafields {
+              id
+            }
+            userErrors {
+              message
+            }
+          }
+        }`,
+        variables: {
+          customizationId,
+          configurationValue: JSON.stringify({
+            paymentMethodName: payload.paymentMethod,
+            cartTotal: payload.cartTotal
+          })
+        }
+      }
+    });
+    // @ts-ignore
+    let metafieldResult = metafieldResponse.body.data.metafieldsSet;
+    if (handleUserError(metafieldResult, res)) {
+      return;
+    }
+  } catch (error) {
+    // Handle errors thrown by the graphql client
+    if (!(error instanceof GraphqlQueryError)) {
+      throw error;
+    }
+    return res.status(500).send({ error: error.response });
+  }
+
+  return res.status(200).send();
+});
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                          delivery Shopify function                         */
+/* -------------------------------------------------------------------------- */
 
 // Endpoint for the delivery customization UI to invoke
 app.post("/api/deliveryCustomization/create", async (req, res) => {
@@ -161,7 +251,9 @@ app.post("/api/deliveryCustomization/create", async (req, res) => {
   return res.status(200).send();
 });
 
-// discount Shopify function
+ /* -------------------------------------------------------------------------- */
+ /*                          discount Shopify function                         */
+ /* -------------------------------------------------------------------------- */
 
 const runDiscountMutation = async (req, res, mutation) => {
   const graphqlClient = new shopify.api.clients.Graphql({

@@ -1,0 +1,12 @@
+name = "bundles cart transform"
+type = "cart_transform"
+title = "bundles cart transform"
+api_version = "unstable"
+
+[input.variables]
+namespace = "$app:my-namespace"
+key = "my-key"
+
+[build]
+command = "cargo wasi build --release"
+path = "target/wasm32-wasi/release/bundles_cart_transform.wasm"
